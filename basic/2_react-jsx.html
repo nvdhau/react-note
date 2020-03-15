@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- React -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <!-- Babel -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>Hello React</title>
+
+    <style>
+        .heading{
+            color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div id="part1">
+    </div><div id="part2">
+
+    <!-- <script type="text/javascript"> -->
+    <!-- use babel instead of javascript -->
+    <script type="text/babel">
+        
+        //JSX - JavaScript XML need to added Babel to transform JSX to code
+        ReactDOM.render(
+            <h1>JSX - JavaScript XML</h1>, 
+            document.getElementById("part1")
+        );
+
+        //JSX - inject variable to template
+        let str = "JavaScript XML";
+
+        ReactDOM.render(
+            //class => className because class is keyword in JS
+            <h1 className="heading">JSX - {str} inject variable to template</h1>, 
+            document.getElementById("part2")
+        );
+
+    </script>
+</body>
+</html>

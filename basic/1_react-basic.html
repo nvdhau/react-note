@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- React -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <!-- Babel -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>Hello React</title>
+
+    <style>
+        .heading{
+            color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div id="part1"></div>
+    <div id="part2"></div>
+
+    <!-- <script type="text/javascript"> -->
+    <!-- use babel instead of javascript, babel convert code to lower JavaScript version -->
+    <script type="text/babel">
+        // 1 element
+        ReactDOM.render(
+            React.createElement(
+                "h1", 
+                {"style": {"color" : "red"}}, 
+                "Hello World"), 
+            document.getElementById("part1")
+        );
+        
+        // nested elements
+        ReactDOM.render(
+            React.createElement(
+                "div", 
+                null, 
+                React.createElement(
+                    "h1",
+                    null,
+                    "Nested elements"
+                )), 
+            document.getElementById("part2")
+        );
+
+    </script>
+</body>
+</html>

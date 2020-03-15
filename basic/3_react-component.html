@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- React -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <!-- Babel -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>Hello React</title>
+
+    <style>
+        .heading{
+            color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div id="part1"></div><div id="part2"></div><div id="part3"></div>
+    <div id="part4"></div><div id="part5">
+
+    <!-- <script type="text/javascript"> -->
+    <!-- use babel instead of javascript -->
+    <script type="text/babel">
+        
+        //Create Component for reusage ability
+        const Hello = () => {//Component must be in Pascal
+            return (
+                <div className="heading">
+                    <h1>Welcome to React</h1>
+                </div>
+            )
+        }
+
+        ReactDOM.render(
+            <Hello/>,//use component
+            document.getElementById("part1")
+        );
+        //--------------------------------------
+
+        //React props for dynamic display data
+        const Hello1 = (props) => {//Component must be in Pascal
+            console.log(props)
+            return (
+                <div className="heading">
+                    <h1>Welcome to {props.event}</h1>
+                    <p>{props.message}</p>
+                </div>
+            )
+        }
+
+        ReactDOM.render(//pass props to React Component
+            <Hello1 event="React Component" message="Enjoy!!!"/>,//use component
+            document.getElementById("part2")
+        );
+        //--------------------------------------
+
+        //props can be destruct
+        const Hello2 = ({event, message}) => {//Component must be in Pascal
+            return (
+                <div>
+                    <h1>Welcome to {event}</h1>
+                    <p>{message}</p>
+                </div>
+            )
+        }
+
+        ReactDOM.render(//pass props to React Component
+            <Hello2 event="React Component" message="Similar to function"/>,//use component
+            document.getElementById("part3")
+        );
+        //--------------------------------------
+
+        //Composing components with function components
+        const Lake = ({name}) => {//Component must be in Pascal
+            return (
+                <h1>Welcome to {name} lake</h1>
+            )
+        }
+
+        const App = () =>(//reuse components
+            <div>
+                <Lake name = "Tahoe"/>
+                <Lake name = "Angora"/>
+                <Lake name = "Shirley"/>
+            </div>
+        );
+
+
+        ReactDOM.render(//pass props to React Component
+            <App/>,//use component
+            document.getElementById("part4")
+        );
+        //--------------------------------------
+
+        //Class components
+        class AppClass extends React.Component{//must extends React.Component
+            render(){//must have render() method
+                return (
+                    <div>
+                        <Lake name = "Tahoe Class"/>
+                        <Lake name = "Angora Class"/>
+                        <Lake name = "Shirley Class"/>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(//pass props to React Component
+            <AppClass/>,//use component
+            document.getElementById("part5")
+        );
+        //--------------------------------------
+    </script>
+</body>
+</html>

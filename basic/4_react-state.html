@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>Hello React</title>
+
+    <style>
+        .heading{
+            color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div id="part1">
+
+    <!-- <script type="text/javascript"> -->
+    <!-- use babel instead of javascript -->
+    <script type="text/babel">
+
+        const Lake = ({name}) => {//Component must be in Pascal
+            return (
+                <h1>Welcome to {name} lake</h1>
+            )
+        }
+
+        //React State
+        class App extends React.Component{
+            state = {
+                loggedIn: false
+            }
+            render(){
+                return (
+                    <div>
+                        <div>The user is {this.state.loggedIn? "logged in" : "not logged in"}</div>
+                        <Lake name = "Tahoe"/>
+                        <Lake name = "Angora"/>
+                        <Lake name = "Shirley"/>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(//pass props to React Component
+            <App/>,//use component
+            document.getElementById("part1")
+        );
+
+    </script>
+</body>
+</html>
