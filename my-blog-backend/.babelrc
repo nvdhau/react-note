@@ -1,0 +1,4 @@
+// tell Babel how to translate to ES6
+{
+  "presets": ["@babel/preset-env"]
+}
