@@ -4,6 +4,9 @@ import React,
 import articles from '../mockup-data/articles'
 import ArticleList from '../components/ArticleList'
 import NotFoundPage from '../pages/NotFoundPage'
+import CommentList from '../components/CommmentList'
+import UpvoteSection from '../components/UpvoteSection'
+import AddCommentForm from '../components/AddCommentForm'
 
 const ArticlePage = ({match}) => {
 
@@ -38,11 +41,12 @@ const ArticlePage = ({match}) => {
   return (
   <React.Fragment>
     <h1>{article.title}</h1>
-    <p>This post has been upvotes {articleInfo.upvotes} times</p>
+    <UpvoteSection articleName={name} upvotes={articleInfo.upvotes}  setArticleInfo={setArticleInfo} />
     {article.content.map((p, key) => (
       <p key={key}>{p}</p>
     ))}
-
+    <CommentList comments={articleInfo.comments} />
+    <AddCommentForm articleName={name}  setArticleInfo={setArticleInfo} />
     <h3>Other Articles:</h3>
     <ArticleList articles={otherArticles} />
   </React.Fragment>
