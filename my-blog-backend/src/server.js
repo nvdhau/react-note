@@ -2,6 +2,7 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import {MongoClient} from 'mongodb'
+import path from 'path'
 //mock-up db
 // const articlesInfo = {
 //   'learn-react': {
@@ -19,6 +20,8 @@ import {MongoClient} from 'mongodb'
 // }
 
 const app = express();
+
+app.use(express.static(path.join(__dirname, '/build')));
 app.use(bodyParser.json());
 
 //refactor mongoDB
@@ -80,6 +83,11 @@ app.post('/api/articles/:name/upvote', async (req, res) => {
 
     res.status(200).json(updatedArticleInfo);
   }, res)//PASS res object
+})
+
+//all request of APIs pass to react-app
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/build/index.html'))
 })
 
 app.listen(8000, () => console.log('Listenning on port 8000'))
